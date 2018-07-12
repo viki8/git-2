@@ -1,0 +1,61 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>test.java</groupId>
+  <artifactId>test.java</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>test.java</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <distributionManagement>
+  <snapshotRepository>
+    <id>deploymentRepo</id>
+    <url>http://18.222.163.133:8080/nexus-latest/content/repositories/snapshots</url>
+  </snapshotRepository>
+ 
+  <repository>
+    <id>deploymentRepo</id>
+    <url>http://18.222.163.133:8080/nexus-latest/content/repositories/releases</url>
+  </repository>
+
+</distributionManagement>
+  <build>
+<plugins>
+<plugin>
+   <groupId>org.sonatype.plugins</groupId>
+   <artifactId>nexus-staging-maven-plugin</artifactId>
+   <version>1.5.1</version>
+   <executions>
+      <execution>
+         <id>default-deploy</id>
+         <phase>deploy</phase>
+         <goals>
+            <goal>deploy</goal>
+         </goals>
+      </execution>
+   </executions>
+   <configuration>
+      <serverId>nexus</serverId>
+      <nexusUrl>http://18.222.163.133:8080/nexus-latest</nexusUrl>
+      <skipStaging>true</skipStaging>
+   </configuration>
+</plugin>
+</plugins>
+</build>
+  
+</project>
+
+
+
+
+
+
